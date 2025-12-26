@@ -1,0 +1,7 @@
+g++ src\main.cpp `
+    -IC:\Users\benel\dev\Cpp\Packages\GCC_15.2.0\SFML\include `
+    -LC:\Users\benel\dev\Cpp\Packages\GCC_15.2.0\SFML\build\lib `
+    -DSFML_STATIC `
+    -lsfml-graphics-s -lfreetype -lsfml-window-s -lsfml-system-s -lsfml-main `
+    -lopengl32 -lgdi32 -lwinmm -limm32 -ldxguid `
+    -o app.exe

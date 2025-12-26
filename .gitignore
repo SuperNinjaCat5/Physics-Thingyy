@@ -1,0 +1,44 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp files
+*.tmp
+*.swp
+*.swo
+*.log
+
+# Build
+*.o
+*.obj
+*.lib
+*.a
+*.dll
+*.so
+*.dylib
+*.exe
+*.out
+*.app
+
+# CMake
+/build/
+CMakeFiles/
+CMakeCache.txt
+*.cmake
+*.make
+
+# IDEs
+.vscode/
+*.vcxproj.user
+*.suo
+*.user
+*.pdb
+*.ipch
+*.opensdf
+*.sdf
+*.VC.db
+.idea/
+cmake-build-*/
+
+# SFML / external libs
+/lib/
