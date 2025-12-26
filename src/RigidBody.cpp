@@ -27,7 +27,7 @@ void RigidBody2d::addForce(const pt::Vec2 &force) { netForce += force; }
 
 // Actions
 
-void RigidBody2d::update(float dt) { // called once per frame
+void RigidBody2d::update(float &dt) { // called once per frame
   // Apply acceleration from net force
   velocity += (netForce / mass) * dt; // v = v + (a * dt)
 

@@ -1,6 +1,6 @@
 #pragma once
+#include "vec2.hpp"
 #include <cmath>
-#include <vec2.hpp>
 
 namespace pt {
 
@@ -29,7 +29,7 @@ public:
   virtual void addForce(const pt::Vec2 &force);
 
   // Actions
-  virtual void update(float dt); // called once per frame
+  virtual void update(float &dt); // called once per frame
 };
 
 } // namespace pt
