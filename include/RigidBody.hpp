@@ -9,19 +9,27 @@ protected:
   pt::Vec2 velocity;
   pt::Vec2 position;
   float mass;
+  pt::Vec2 netForce;
 
 public:
   // Constructor
 
-  RigidBody2d(pt::Vec2 velocity_, pt::Vec2 position_, float mass_)
-      : mass(mass_), velocity(velocity_), position(position_) {}
+  RigidBody2d(const pt::Vec2 &velocity_ = pt::Vec2::Zero,
+              const pt::Vec2 &position_ = pt::Vec2::Zero, float mass_ = 1.0f,
+              const pt::Vec2 &netForce = pt::Vec2::Zero);
 
-  // get all values
-  pt::Vec2 getVelocity();
-  pt::Vec2 getPosition();
-  pt::Vec2 getMass();
+  // Value fetches
+  pt::Vec2 getVelocity() const;
+  pt::Vec2 getPosition() const;
+  float getMass() const;
+  pt::Vec2 getNetForce() const;
 
-  // More to come....
+  // Forces
+
+  virtual void addForce(const pt::Vec2 &force);
+
+  // Actions
+  virtual void update(float dt); // called once per frame
 };
 
 } // namespace pt
