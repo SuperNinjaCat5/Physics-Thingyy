@@ -1,4 +1,5 @@
 #include "RigidBody.hpp"
+#include "RigidBodyRectangle.hpp"
 #include "vec2.hpp"
 #include <SFML/Graphics.hpp>
 #include <cmath>
@@ -33,9 +34,9 @@ int main() {
 
   // Shapes setup
 
-  sf::RectangleShape rect({50.0f, 50.0f});
-  rect.setOrigin({rect.getSize().x / 2, rect.getSize().y / 2});
-  pt::RigidBody2d rectRB = pt::RigidBody2d(pt::Vec2{50, 0});
+  pt::RigidBodyRectangle rect = pt::RigidBodyRectangle(50, 50, &window);
+  pt::RigidBodyRectangle rect1 =
+      pt::RigidBodyRectangle(50, 50, &window, pt::Vec2::Zero, pt::Vec2{150, 0});
 
   while (window.isOpen()) {
 
@@ -46,17 +47,25 @@ int main() {
       }
     };
 
-    // Updates
+    // Forces -----------------------------
+    rect.addForce(pt::Vec2{-50, 0});
+    rect.addForce(pt::Vec2{0, 50});
+
+    rect1.addForce(pt::Vec2{50, 23});
+
+    // Updates ----------------------------
     float dt = dtClock.restart().asSeconds();
-    rectRB.update(dt);
+    rect.update(dt);
+    rect1.update(dt);
 
-    // Movements
-    pt::Vec2 rectPos = rectRB.getPosition();
-    rect.setPosition(sf::Vector2{rectPos.x, rectPos.y});
-
-    // Display
+    // Display ----------------------------
     window.clear();
-    window.draw(rect);
+
+    // Draws ---
+    rect.draw(window);
+    rect1.draw(window);
+
+    // --
     window.display();
   };
 

@@ -1,4 +1,4 @@
-g++ src\main.cpp src\RigidBody.cpp src\vec2.cpp `
+g++ src\main.cpp src\RigidBody.cpp src\vec2.cpp src\RigidBodyRectangle.cpp `
     -I"C:\Users\benel\dev\Cpp\Projects\Physics-Engine\include" `
     -I"C:\Users\benel\dev\Cpp\Packages\GCC_15.2.0\SFML\include" `
     -L"C:\Users\benel\dev\Cpp\Packages\GCC_15.2.0\SFML\build\lib" `
