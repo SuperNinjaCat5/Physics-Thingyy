@@ -1,6 +1,6 @@
-#include "RigidBodyRectangle.hpp"
-#include "RigidBody.hpp"
-#include "Vec2.hpp"
+#include "pt/shapes/RigidBodyRectangle.hpp"
+#include "pt/RigidBody.hpp"
+#include "pt/Vec2.hpp"
 #include <cassert>
 
 namespace pt {

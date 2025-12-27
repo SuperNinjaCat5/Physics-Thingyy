@@ -1,6 +1,4 @@
-#include "RigidBody.hpp"
-#include "RigidBodyRectangle.hpp"
-#include "vec2.hpp"
+#include "pt/PhysicsThingyy.hpp"
 #include <SFML/Graphics.hpp>
 #include <cmath>
 #include <ctime>

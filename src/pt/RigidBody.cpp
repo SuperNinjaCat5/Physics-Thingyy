@@ -1,5 +1,5 @@
-#include "RigidBody.hpp"
-#include "Vec2.hpp"
+#include "pt/RigidBody.hpp"
+#include "pt/vec2.hpp"
 #include <cassert>
 
 namespace pt {

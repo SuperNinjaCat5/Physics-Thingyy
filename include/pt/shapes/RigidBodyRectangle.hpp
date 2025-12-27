@@ -1,6 +1,6 @@
 #pragma once
-#include "RigidBody.hpp"
-#include "vec2.hpp"
+#include "pt/RigidBody.hpp"
+#include "pt/vec2.hpp"
 #include <SFML/Graphics.hpp>
 
 namespace pt {
