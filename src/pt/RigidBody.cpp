@@ -24,6 +24,19 @@ pt::Vec2 RigidBody2d::getNetForce() const { return netForce; }
 // Forces
 
 void RigidBody2d::addForce(const pt::Vec2 &force) { netForce += force; }
+// void RigidBody2d::applyGravity(const pt::Vec2 direction) {
+
+//   Vec2 forceG = mass * 9.8;
+
+//   switch (direction) {
+//   case const Vec2::{0, -1}:
+//     netForce break;
+
+//   default:
+//     break;
+//   }
+//   netForce += force;
+// }
 
 // Actions
 

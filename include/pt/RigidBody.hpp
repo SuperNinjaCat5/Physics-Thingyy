@@ -1,5 +1,5 @@
 #pragma once
-#include "vec2.hpp"
+#include "pt/vec2.hpp"
 #include <cmath>
 
 namespace pt {
@@ -27,6 +27,7 @@ public:
   // Forces
 
   virtual void addForce(const pt::Vec2 &force);
+  virtual void applyGravity(const Vec2 direction = Vec2{0, -1});
 
   // Actions
   virtual void update(float &dt); // called once per frame

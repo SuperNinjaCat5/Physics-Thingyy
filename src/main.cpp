@@ -16,7 +16,7 @@ int main() {
   sf::RenderWindow window(sf::VideoMode({UIConfig::WIDTH, UIConfig::HEIGHT}),
                           "Physics Engine");
 
-  const sf::Font font("roboto.ttf");
+  const sf::Font font("static/roboto.ttf");
 
   // View setup
 
@@ -33,8 +33,8 @@ int main() {
   // Shapes setup
 
   pt::RigidBodyRectangle rect = pt::RigidBodyRectangle(50, 50, &window);
-  pt::RigidBodyRectangle rect1 =
-      pt::RigidBodyRectangle(50, 50, &window, pt::Vec2::Zero, pt::Vec2{150, 0});
+  pt::SurfaceRectangle floor =
+      pt::SurfaceRectangle(1000, 25, &window, {0, -150});
 
   while (window.isOpen()) {
 
@@ -49,19 +49,17 @@ int main() {
     rect.addForce(pt::Vec2{-50, 0});
     rect.addForce(pt::Vec2{0, 50});
 
-    rect1.addForce(pt::Vec2{50, 23});
-
     // Updates ----------------------------
     float dt = dtClock.restart().asSeconds();
     rect.update(dt);
-    rect1.update(dt);
+    floor.update(dt);
 
     // Display ----------------------------
     window.clear();
 
     // Draws ---
+    floor.draw(window);
     rect.draw(window);
-    rect1.draw(window);
 
     // --
     window.display();
