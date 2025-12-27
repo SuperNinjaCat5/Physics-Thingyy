@@ -24,11 +24,15 @@ public:
   float getMass() const;
   pt::Vec2 getNetForce() const;
 
+  virtual float getMinX() const = 0;
+  virtual float getMaxX() const = 0;
+  virtual float getMinY() const = 0;
+  virtual float getMaxY() const = 0;
+
   // Forces
 
   virtual void addForce(const pt::Vec2 &force);
-  virtual void
-  applyGravity(); // could add const Vec2 direction = Vec2{0, -1} later
+  virtual void applyGravity(); // could add const Vec2 direction later
 
   // Actions
   virtual void update(float &dt); // called once per frame

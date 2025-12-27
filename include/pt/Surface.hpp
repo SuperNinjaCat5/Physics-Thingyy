@@ -18,6 +18,11 @@ public:
   pt::Vec2 getPosition() const;
   float getMass() const;
 
+  virtual float getMinX() const = 0;
+  virtual float getMaxX() const = 0;
+  virtual float getMinY() const = 0;
+  virtual float getMaxY() const = 0;
+
   // Actions
   virtual void update(float &dt); // called once per frame
 };

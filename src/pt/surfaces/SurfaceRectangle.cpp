@@ -24,6 +24,11 @@ pt::Vec2 SurfaceRectangle::getPosition() const { return position; }
 
 float SurfaceRectangle::getMass() const { return mass; }
 
+float SurfaceRectangle::getMinX() const { return position.x - width / 2; }
+float SurfaceRectangle::getMaxX() const { return position.x + width / 2; }
+float SurfaceRectangle::getMinY() const { return position.y - height / 2; }
+float SurfaceRectangle::getMaxY() const { return position.y + height / 2; }
+
 // Actions
 
 void SurfaceRectangle::update(float &dt) { // called once per frame

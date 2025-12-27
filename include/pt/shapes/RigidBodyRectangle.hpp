@@ -28,6 +28,11 @@ public:
   float getHeight() const;
   sf::RectangleShape getRect() const;
 
+  float getMinX() const override;
+  float getMaxX() const override;
+  float getMinY() const override;
+  float getMaxY() const override;
+
   // Actions
 
   void update(float &dt) override;

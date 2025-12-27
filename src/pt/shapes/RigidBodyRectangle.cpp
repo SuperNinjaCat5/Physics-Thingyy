@@ -1,3 +1,4 @@
+#include "pt/shapes/RigidBodyRectangle.hpp"
 #include "pt/PhysicsThingyy.hpp"
 #include <cassert>
 
@@ -23,6 +24,11 @@ RigidBodyRectangle::RigidBodyRectangle(const float width_, const float height_,
 float RigidBodyRectangle::getWidth() const { return width; }
 float RigidBodyRectangle::getHeight() const { return height; }
 sf::RectangleShape RigidBodyRectangle::getRect() const { return rect; }
+
+float RigidBodyRectangle::getMinX() const { return position.x - width / 2; }
+float RigidBodyRectangle::getMaxX() const { return position.x + width / 2; }
+float RigidBodyRectangle::getMinY() const { return position.y - height / 2; }
+float RigidBodyRectangle::getMaxY() const { return position.y + height / 2; }
 
 // Actions
 

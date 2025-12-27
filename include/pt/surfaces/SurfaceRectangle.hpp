@@ -24,8 +24,13 @@ public:
   pt::Vec2 getPosition() const;
   float getMass() const;
 
+  float getMinX() const;
+  float getMaxX() const;
+  float getMinY() const;
+  float getMaxY() const;
+
   // Actions
-  virtual void update(float &dt); // called once per frame
+  void update(float &dt); // called once per frame
 
   void draw(sf::RenderWindow &window_, const bool flipY = false,
             sf::RenderStates states_ = sf::RenderStates()) const;

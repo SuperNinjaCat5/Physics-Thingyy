@@ -1,5 +1,7 @@
+#include "pt/RigidBody.hpp"
 #include "pt/PhysicsThingyy.hpp"
 #include <cassert>
+
 
 namespace pt {
 // Constructor
