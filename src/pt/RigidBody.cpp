@@ -24,7 +24,7 @@ pt::Vec2 RigidBody2d::getNetForce() const { return netForce; }
 
 void RigidBody2d::addForce(const pt::Vec2 &force) { netForce += force; }
 void RigidBody2d::applyGravity() {
-  Vec2 forceG = Vec2{0, mass * -9.8f * Scale::PIXEL_TO_METER};
+  Vec2 forceG = Vec2{0, mass * -9.8f};
   netForce += forceG;
 }
 
