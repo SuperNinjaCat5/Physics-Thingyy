@@ -1,5 +1,4 @@
-#include "pt/RigidBody.hpp"
-#include "pt/vec2.hpp"
+#include "pt/PhysicsThingyy.hpp"
 #include <cassert>
 
 namespace pt {
@@ -24,25 +23,17 @@ pt::Vec2 RigidBody2d::getNetForce() const { return netForce; }
 // Forces
 
 void RigidBody2d::addForce(const pt::Vec2 &force) { netForce += force; }
-// void RigidBody2d::applyGravity(const pt::Vec2 direction) {
-
-//   Vec2 forceG = mass * 9.8;
-
-//   switch (direction) {
-//   case const Vec2::{0, -1}:
-//     netForce break;
-
-//   default:
-//     break;
-//   }
-//   netForce += force;
-// }
+void RigidBody2d::applyGravity() {
+  Vec2 forceG = Vec2{0, mass * -9.8f * Scale::PIXEL_TO_METER};
+  netForce += forceG;
+}
 
 // Actions
 
 void RigidBody2d::update(float &dt) { // called once per frame
   // Apply acceleration from net force
-  velocity += (netForce / mass) * dt; // v = v + (a * dt)
+  velocity +=
+      ((netForce / mass) * dt) * Scale::METER_TO_PIXEL; // v = v + (a * dt)
 
   // Apply velocity to position
   position += (velocity * dt); // p = p + (v*dt)

@@ -15,7 +15,7 @@
 
 namespace pt {
 struct Scale {
-  const float PIXEL_TO_METER;
-  const float METER_TO_PIXEL;
+  static constexpr float PIXEL_TO_METER = 0.1f;
+  static constexpr float METER_TO_PIXEL = 10.0f;
 };
 } // namespace pt

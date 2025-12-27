@@ -1,6 +1,4 @@
-#include "pt/shapes/RigidBodyRectangle.hpp"
-#include "pt/RigidBody.hpp"
-#include "pt/Vec2.hpp"
+#include "pt/PhysicsThingyy.hpp"
 #include <cassert>
 
 namespace pt {
@@ -30,7 +28,8 @@ sf::RectangleShape RigidBodyRectangle::getRect() const { return rect; }
 
 void RigidBodyRectangle::update(float &dt) { // called once per frame
   // Apply acceleration from net force
-  velocity += (netForce / mass) * dt; // v = v + (a * dt)
+  velocity +=
+      ((netForce / mass) * dt) * Scale::METER_TO_PIXEL; // v = v + (a * dt)
 
   // Apply velocity to position
   position += (velocity * dt); // p = p + (v*dt)

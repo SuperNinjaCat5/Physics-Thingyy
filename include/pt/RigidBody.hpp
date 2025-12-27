@@ -27,7 +27,8 @@ public:
   // Forces
 
   virtual void addForce(const pt::Vec2 &force);
-  virtual void applyGravity(const Vec2 direction = Vec2{0, -1});
+  virtual void
+  applyGravity(); // could add const Vec2 direction = Vec2{0, -1} later
 
   // Actions
   virtual void update(float &dt); // called once per frame

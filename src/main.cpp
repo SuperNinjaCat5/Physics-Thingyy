@@ -46,8 +46,11 @@ int main() {
     };
 
     // Forces -----------------------------
-    rect.addForce(pt::Vec2{-50, 0});
-    rect.addForce(pt::Vec2{0, 50});
+
+    rect.applyGravity();
+
+    // rect.addForce(pt::Vec2{-50, 0});
+    // rect.addForce(pt::Vec2{0, 50});
 
     // Updates ----------------------------
     float dt = dtClock.restart().asSeconds();
