@@ -1,6 +1,6 @@
 #pragma once
 #include "pt/Surface.hpp"
-#include "pt/vec2.hpp"
+#include "pt/helpers/vec2.hpp"
 #include <SFML/Graphics.hpp>
 
 namespace pt {

@@ -1,5 +1,5 @@
 g++ src\main.cpp src\pt\RigidBody.cpp `
-    src\pt\vec2.cpp `
+    src\pt\helpers\vec2.cpp `
     src\pt\shapes\RigidBodyRectangle.cpp `
     src\pt\Surface.cpp `
     src\pt\surfaces\SurfaceRectangle.cpp `

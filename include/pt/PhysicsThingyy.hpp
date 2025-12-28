@@ -1,7 +1,7 @@
 #pragma once
 
 #include "pt/CollisionManager.hpp"
-#include "pt/vec2.hpp"
+#include "pt/helpers/vec2.hpp"
 
 // Shapes
 
