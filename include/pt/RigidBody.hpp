@@ -35,6 +35,8 @@ public:
 
   // Forces
 
+  virtual void move(Vec2 &delta) = 0;
+  virtual void setVelocity(Vec2 &newVelocity) = 0;
   virtual void addForce(const Vec2 &force);
   virtual void applyGravity(); // could add const Vec2 direction later
 

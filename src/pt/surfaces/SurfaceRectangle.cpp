@@ -1,5 +1,7 @@
 #include "pt/surfaces/SurfaceRectangle.hpp"
+#include "pt/PhysicsThingyy.hpp"
 #include "pt/Surface.hpp"
+#include "pt/helpers/Material.hpp"
 #include "pt/helpers/vec2.hpp"
 #include <cassert>
 
@@ -8,31 +10,34 @@ namespace pt {
 
 SurfaceRectangle::SurfaceRectangle(const float width_, const float height_,
                                    sf::RenderWindow *window_,
-                                   const Vec2 &position_, float mass_)
-    : Surface2d(position_, mass_), // base constructor
-      width(width_), height(height_), pWindow(window_) {
+                                   const Vec2 &positionPixels_,
+                                   Material material_)
+    : Surface2d(positionPixels_, material_), // base constructor
+      widthMeters(width_ * Scale::PIXEL_TO_METER),
+      heightMeters(height_ * Scale::PIXEL_TO_METER), pWindow(window_) {
 
-  rect.setSize({width, height});
+  rect.setSize({width_, height_});
   rect.setOrigin({rect.getSize().x / 2, rect.getSize().y / 2});
-
-  assert(mass_ > 0 && "A rigid bodies mass must be positive");
 };
 
 // Value fetches
 
 Vec2 SurfaceRectangle::getPosition() const { return position; }
 
-float SurfaceRectangle::getMass() const { return mass; }
-
-float SurfaceRectangle::getMinX() const { return position.x - width / 2; }
-float SurfaceRectangle::getMaxX() const { return position.x + width / 2; }
-float SurfaceRectangle::getMinY() const { return position.y - height / 2; }
-float SurfaceRectangle::getMaxY() const { return position.y + height / 2; }
+float SurfaceRectangle::getMinX() const { return position.x - widthMeters / 2; }
+float SurfaceRectangle::getMaxX() const { return position.x + widthMeters / 2; }
+float SurfaceRectangle::getMinY() const {
+  return position.y - heightMeters / 2;
+}
+float SurfaceRectangle::getMaxY() const {
+  return position.y + heightMeters / 2;
+}
 
 // Actions
 
 void SurfaceRectangle::update(float &dt) { // called once per frame
-  rect.setPosition(sf::Vector2f{position.x, position.y});
+  rect.setPosition(sf::Vector2f{position.x * Scale::METER_TO_PIXEL,
+                                position.y * Scale::METER_TO_PIXEL});
 }
 
 void SurfaceRectangle::draw(sf::RenderWindow &window_, const bool flipY,

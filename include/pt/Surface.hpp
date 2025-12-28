@@ -1,4 +1,5 @@
 #pragma once
+#include "pt/helpers/Material.hpp"
 #include "pt/helpers/vec2.hpp"
 #include <cmath>
 
@@ -7,16 +8,18 @@ namespace pt {
 class Surface2d {
 protected:
   Vec2 position;
-  float mass;
+  Material material;
 
 public:
   // Constructor
 
-  Surface2d(const Vec2 &position_ = Vec2::Zero, float mass_ = 1.0f);
+  Surface2d(const Vec2 &positionPixels_ = Vec2::Zero,
+            Material material_ = Material::STEEL);
 
   // Value fetches
   Vec2 getPosition() const;
   float getMass() const;
+  Material getMaterial() const;
 
   virtual float getMinX() const = 0;
   virtual float getMaxX() const = 0;

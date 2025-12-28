@@ -32,10 +32,18 @@ int main() {
 
   // Shapes setup
 
-  pt::RigidBodyRectangle rect =
-      pt::RigidBodyRectangle(50, 50, &window, {15, 15}, pt::Vec2::Zero, 10.0f);
+  pt::RigidBodyRectangle rect = pt::RigidBodyRectangle(
+      50, 50, &window, {15, 0}, pt::Vec2::Zero, 10.0f, pt::Material::STEEL);
+
   pt::SurfaceRectangle floor =
-      pt::SurfaceRectangle(1000, 25, &window, {0, -150});
+      pt::SurfaceRectangle(1000, 25, &window, {0, -40}, pt::Material::ICE);
+
+  // Collision setup
+
+  pt::CollisionManager collisionManager;
+
+  collisionManager.addRigidBody(&rect);
+  collisionManager.addSurface(&floor);
 
   while (window.isOpen()) {
 
@@ -57,6 +65,7 @@ int main() {
     float dt = dtClock.restart().asSeconds();
     rect.update(dt);
     floor.update(dt);
+    collisionManager.update(dt);
 
     // Display ----------------------------
     window.clear();

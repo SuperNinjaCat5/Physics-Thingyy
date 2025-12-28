@@ -11,11 +11,12 @@ RigidBodyRectangle::RigidBodyRectangle(const float width_, const float height_,
                                        const Vec2 &position_, float mass_,
                                        const Material &material_,
                                        const Vec2 &netForce_)
-    : RigidBody2d(velocity_, position_, mass_, material_,
-                  netForce_), // base constructor
-      width(width_), height(height_), pWindow(window_) {
+    : RigidBody2d(velocity_, position_ * Scale::PIXEL_TO_METER, mass_,
+                  material_, netForce_), // store meters internally
+      widthMeters(width_ * Scale::PIXEL_TO_METER),
+      heightMeters(height_ * Scale::PIXEL_TO_METER), pWindow(window_) {
 
-  rect.setSize({width, height});
+  rect.setSize({width_, height_});
   rect.setOrigin({rect.getSize().x / 2, rect.getSize().y / 2});
 
   assert(mass_ > 0 && "A rigid bodies mass must be positive");
@@ -23,16 +24,30 @@ RigidBodyRectangle::RigidBodyRectangle(const float width_, const float height_,
 
 // Value fetches
 
-float RigidBodyRectangle::getWidth() const { return width; }
-float RigidBodyRectangle::getHeight() const { return height; }
+float RigidBodyRectangle::getWidth() const { return widthMeters; }
+float RigidBodyRectangle::getHeight() const { return heightMeters; }
 sf::RectangleShape RigidBodyRectangle::getRect() const { return rect; }
 
-float RigidBodyRectangle::getMinX() const { return position.x - width / 2; }
-float RigidBodyRectangle::getMaxX() const { return position.x + width / 2; }
-float RigidBodyRectangle::getMinY() const { return position.y - height / 2; }
-float RigidBodyRectangle::getMaxY() const { return position.y + height / 2; }
+float RigidBodyRectangle::getMinX() const {
+  return position.x - widthMeters / 2;
+}
+float RigidBodyRectangle::getMaxX() const {
+  return position.x + widthMeters / 2;
+}
+float RigidBodyRectangle::getMinY() const {
+  return position.y - heightMeters / 2;
+}
+float RigidBodyRectangle::getMaxY() const {
+  return position.y + heightMeters / 2;
+}
 
 // Actions
+
+void RigidBodyRectangle::move(Vec2 &delta) { position += delta; }
+
+void RigidBodyRectangle::setVelocity(Vec2 &newVelocity) {
+  velocity = newVelocity;
+}
 
 void RigidBodyRectangle::update(float &dt) { // called once per frame
   // Apply acceleration from net force

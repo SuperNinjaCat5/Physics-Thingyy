@@ -9,8 +9,8 @@ class RigidBodyRectangle : public RigidBody2d {
 private:
   sf::RectangleShape rect;
   sf::RenderWindow *pWindow = nullptr;
-  float width;
-  float height;
+  float widthMeters;
+  float heightMeters;
 
 public:
   // Constructor
@@ -35,6 +35,8 @@ public:
 
   // Actions
 
+  void move(Vec2 &delta) override;
+  void setVelocity(Vec2 &newVelocity) override;
   void update(float &dt) override;
   void draw(sf::RenderWindow &window_, const bool flipY = false,
             sf::RenderStates states_ = sf::RenderStates()) const;

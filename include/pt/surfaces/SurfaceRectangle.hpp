@@ -1,5 +1,6 @@
 #pragma once
 #include "pt/Surface.hpp"
+#include "pt/helpers/Material.hpp"
 #include "pt/helpers/vec2.hpp"
 #include <SFML/Graphics.hpp>
 
@@ -9,15 +10,16 @@ class SurfaceRectangle : public Surface2d {
 private:
   sf::RectangleShape rect;
   sf::RenderWindow *pWindow = nullptr;
-  float width;
-  float height;
+  float widthMeters;
+  float heightMeters;
 
 public:
   // Constructor
 
   SurfaceRectangle(const float width, const float height,
                    sf::RenderWindow *window_,
-                   const Vec2 &position_ = Vec2::Zero, float mass_ = 1.0f);
+                   const Vec2 &position_ = Vec2::Zero,
+                   Material material_ = Material::STEEL);
 
   // Value fetches
   Vec2 getPosition() const;
