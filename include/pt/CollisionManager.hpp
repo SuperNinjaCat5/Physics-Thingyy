@@ -15,7 +15,9 @@ private:
 
   bool checkCollision(pt::RigidBody2d *pBodyA, pt::RigidBody2d *pBodyB);
 
-  void resolveCollision();
+  void resolveCollision(pt::RigidBody2d *pBody, pt::Surface2d *pSurface);
+
+  void resolveCollision(pt::RigidBody2d *pBodyA, pt::RigidBody2d *pBodyB);
 
 public:
   // Constructor

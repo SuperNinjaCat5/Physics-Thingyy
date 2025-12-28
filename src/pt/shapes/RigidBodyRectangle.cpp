@@ -34,14 +34,14 @@ float RigidBodyRectangle::getMaxY() const { return position.y + height / 2; }
 
 void RigidBodyRectangle::update(float &dt) { // called once per frame
   // Apply acceleration from net force
-  velocity +=
-      ((netForce / mass) * dt) * Scale::METER_TO_PIXEL; // v = v + (a * dt)
+  velocity += (netForce / mass) * dt; // v = v + (a * dt)
 
   // Apply velocity to position
   position += (velocity * dt); // p = p + (v*dt)
 
   // Move on screen
-  rect.setPosition(sf::Vector2f{position.x, position.y});
+  rect.setPosition(sf::Vector2f{position.x * Scale::METER_TO_PIXEL,
+                                position.y * Scale::METER_TO_PIXEL});
 
   // Reset netForce for next frame
   netForce = pt::Vec2::Zero;

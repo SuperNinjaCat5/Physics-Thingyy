@@ -32,7 +32,8 @@ int main() {
 
   // Shapes setup
 
-  pt::RigidBodyRectangle rect = pt::RigidBodyRectangle(50, 50, &window);
+  pt::RigidBodyRectangle rect =
+      pt::RigidBodyRectangle(50, 50, &window, {15, 15}, pt::Vec2::Zero, 10.0f);
   pt::SurfaceRectangle floor =
       pt::SurfaceRectangle(1000, 25, &window, {0, -150});
 
@@ -50,7 +51,7 @@ int main() {
     rect.applyGravity();
 
     // rect.addForce(pt::Vec2{-50, 0});
-    // rect.addForce(pt::Vec2{0, 50});
+    // rect.addForce(pt::Vec2{-10, 0});
 
     // Updates ----------------------------
     float dt = dtClock.restart().asSeconds();
