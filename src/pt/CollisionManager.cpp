@@ -28,8 +28,8 @@ bool CollisionManager::checkCollision(RigidBody2d *pBodyA,
   return false;
 }
 
-void CollisionManager::resolveCollision(RigidBody2d *pBody,
-                                        Surface2d *pSurface) {
+void CollisionManager::resolveCollision(RigidBody2d *pBody, Surface2d *pSurface,
+                                        float &dt) {
   float overlapX = std::min(pBody->getMaxX(), pSurface->getMaxX()) -
                    std::max(pBody->getMinX(), pSurface->getMinX());
 
@@ -59,13 +59,21 @@ void CollisionManager::resolveCollision(RigidBody2d *pBody,
   float vNormal = pBody->getVelocity().dot(normal);
   Vec2 vTangent = vel - normal * vNormal;
 
+  float muBody = pBody->getMaterial().friction;
+  float muSurface = pSurface->getMaterial().friction;
+  float mu = std::max(muBody, muSurface);
+
+  Vec2 gravity = Vec2{0, 9.81f};
+  float F_normal = pBody->getMass() * gravity.dot(normal);
+  float frictionFactor =
+      1.0f -
+      std::min((mu * F_normal * dt / (vTangent.length() * pBody->getMass())),
+               1.0f);
+
   if (vTangent.length() < Epsilon) {
     vTangent = Vec2::Zero;
   } else {
-    float muBody = pBody->getMaterial().friction;
-    float muSurface = pSurface->getMaterial().friction;
-    float mu = std::max(muBody, muSurface);
-    vTangent *= std::max(0.0f, 1.0f - mu);
+    vTangent *= frictionFactor;
   }
 
   if (vNormal < -Epsilon) {
@@ -94,7 +102,7 @@ void CollisionManager::update(float &dt) {
     for (auto &pSurface : pSurfaces) {
       Surface2d *Surface = pSurface.get();
       if (checkCollision(body, Surface)) {
-        resolveCollision(body, Surface);
+        resolveCollision(body, Surface, dt);
       }
     }
   };

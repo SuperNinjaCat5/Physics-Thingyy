@@ -33,10 +33,10 @@ int main() {
   // Shapes setup
 
   pt::RigidBodyRectangle rect = pt::RigidBodyRectangle(
-      50, 50, &window, {15, 0}, pt::Vec2::Zero, 10.0f, pt::Material::STEEL);
+      50, 50, &window, {15, 0}, pt::Vec2::Zero, 10.0f, pt::Material::RUBBER);
 
   pt::SurfaceRectangle floor =
-      pt::SurfaceRectangle(1000, 25, &window, {0, -40}, pt::Material::ICE);
+      pt::SurfaceRectangle(1000, 25, &window, {0, -30}, pt::Material::CONCRETE);
 
   // Collision setup
 

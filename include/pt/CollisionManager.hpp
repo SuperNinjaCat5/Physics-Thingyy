@@ -15,7 +15,7 @@ private:
 
   bool checkCollision(RigidBody2d *pBodyA, RigidBody2d *pBodyB);
 
-  void resolveCollision(RigidBody2d *pBody, Surface2d *pSurface);
+  void resolveCollision(RigidBody2d *pBody, Surface2d *pSurface, float &dt);
 
   void resolveCollision(RigidBody2d *pBodyA, RigidBody2d *pBodyB);
 
