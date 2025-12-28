@@ -20,4 +20,5 @@ struct Scale {
   static constexpr float PIXEL_TO_METER = 0.1f;
   static constexpr float METER_TO_PIXEL = 10.0f;
 };
+static constexpr float Epsilon = 0.01;
 } // namespace pt

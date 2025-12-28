@@ -7,10 +7,10 @@ namespace pt {
 
 RigidBodyRectangle::RigidBodyRectangle(const float width_, const float height_,
                                        sf::RenderWindow *window_,
-                                       const pt::Vec2 &velocity_,
-                                       const pt::Vec2 &position_, float mass_,
+                                       const Vec2 &velocity_,
+                                       const Vec2 &position_, float mass_,
                                        const Material &material_,
-                                       const pt::Vec2 &netForce_)
+                                       const Vec2 &netForce_)
     : RigidBody2d(velocity_, position_, mass_, material_,
                   netForce_), // base constructor
       width(width_), height(height_), pWindow(window_) {
@@ -46,7 +46,7 @@ void RigidBodyRectangle::update(float &dt) { // called once per frame
                                 position.y * Scale::METER_TO_PIXEL});
 
   // Reset netForce for next frame
-  netForce = pt::Vec2::Zero;
+  netForce = Vec2::Zero;
 }
 
 void RigidBodyRectangle::draw(sf::RenderWindow &window_, const bool flipY,

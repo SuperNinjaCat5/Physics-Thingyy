@@ -7,26 +7,26 @@ namespace pt {
 
 class RigidBody2d {
 protected:
-  pt::Vec2 velocity;
-  pt::Vec2 position;
+  Vec2 velocity;
+  Vec2 position;
   float mass;
-  pt::Vec2 netForce;
-  pt::Material material;
+  Vec2 netForce;
+  Material material;
 
 public:
   // Constructor
 
-  RigidBody2d(const pt::Vec2 &velocity_ = pt::Vec2::Zero,
-              const pt::Vec2 &position_ = pt::Vec2::Zero, float mass_ = 1.0f,
-              const pt::Material &material_ = Material::STEEL,
-              const pt::Vec2 &netForce_ = pt::Vec2::Zero);
+  RigidBody2d(const Vec2 &velocity_ = Vec2::Zero,
+              const Vec2 &position_ = Vec2::Zero, float mass_ = 1.0f,
+              const Material &material_ = Material::STEEL,
+              const Vec2 &netForce_ = Vec2::Zero);
 
   // Value fetches
-  pt::Vec2 getVelocity() const;
-  pt::Vec2 getPosition() const;
+  Vec2 getVelocity() const;
+  Vec2 getPosition() const;
   float getMass() const;
-  pt::Vec2 getNetForce() const;
-  pt::Material getMaterial() const;
+  Vec2 getNetForce() const;
+  Material getMaterial() const;
 
   virtual float getMinX() const = 0;
   virtual float getMaxX() const = 0;
@@ -35,7 +35,7 @@ public:
 
   // Forces
 
-  virtual void addForce(const pt::Vec2 &force);
+  virtual void addForce(const Vec2 &force);
   virtual void applyGravity(); // could add const Vec2 direction later
 
   // Actions

@@ -8,15 +8,14 @@ namespace pt {
 
 CollisionManager::CollisionManager() {}
 
-void CollisionManager::addSurface(pt::Surface2d *pSurface) {
-  pSurfaces.push_back(std::unique_ptr<pt::Surface2d>(pSurface));
+void CollisionManager::addSurface(Surface2d *pSurface) {
+  pSurfaces.push_back(std::unique_ptr<Surface2d>(pSurface));
 }
-void CollisionManager::addRigidBody(pt::RigidBody2d *pRigidBody) {
-  pBodies.push_back(std::unique_ptr<pt::RigidBody2d>(pRigidBody));
+void CollisionManager::addRigidBody(RigidBody2d *pRigidBody) {
+  pBodies.push_back(std::unique_ptr<RigidBody2d>(pRigidBody));
 }
 
-bool CollisionManager::checkCollision(pt::RigidBody2d *pBody,
-                                      pt::Surface2d *pSurface) {
+bool CollisionManager::checkCollision(RigidBody2d *pBody, Surface2d *pSurface) {
 
   return (!((pBody->getMaxX()) < (pSurface->getMinX()) ||
             (pBody->getMinX()) > (pSurface->getMaxX())) &&
@@ -24,19 +23,19 @@ bool CollisionManager::checkCollision(pt::RigidBody2d *pBody,
             (pBody->getMinY()) > (pSurface->getMaxY())));
 }
 
-bool CollisionManager::checkCollision(pt::RigidBody2d *pBodyA,
-                                      pt::RigidBody2d *pBodyB) {
+bool CollisionManager::checkCollision(RigidBody2d *pBodyA,
+                                      RigidBody2d *pBodyB) {
   return false;
 }
 
-void CollisionManager::resolveCollision(pt::RigidBody2d *pBody,
-                                        pt::Surface2d *pSurface) {
+void CollisionManager::resolveCollision(RigidBody2d *pBody,
+                                        Surface2d *pSurface) {
   // code to resolve w/ rigid body and surface
   return;
 }
 
-void CollisionManager::resolveCollision(pt::RigidBody2d *pBodyA,
-                                        pt::RigidBody2d *pBodyB) {
+void CollisionManager::resolveCollision(RigidBody2d *pBodyA,
+                                        RigidBody2d *pBodyB) {
   // code to resolve w/ 2 rigid bodies
   return;
 }
@@ -44,9 +43,9 @@ void CollisionManager::resolveCollision(pt::RigidBody2d *pBodyA,
 void CollisionManager::update(float &dt) {
 
   for (auto &pBody : pBodies) {
-    pt::RigidBody2d *body = pBody.get();
+    RigidBody2d *body = pBody.get();
     for (auto &pSurface : pSurfaces) {
-      pt::Surface2d *Surface = pSurface.get();
+      Surface2d *Surface = pSurface.get();
       if (checkCollision(body, Surface)) {
         resolveCollision(body, Surface);
       }
@@ -54,9 +53,9 @@ void CollisionManager::update(float &dt) {
   };
 
   for (auto &pBodyA : pBodies) {
-    pt::RigidBody2d *bodyB = pBodyA.get();
+    RigidBody2d *bodyB = pBodyA.get();
     for (auto &pBodyB : pBodies) {
-      pt::RigidBody2d *bodyA = pBodyB.get();
+      RigidBody2d *bodyA = pBodyB.get();
       if (checkCollision(bodyA, bodyA)) {
         resolveCollision(bodyA, bodyB);
       }

@@ -17,11 +17,10 @@ public:
 
   RigidBodyRectangle(const float width, const float height,
                      sf::RenderWindow *window_,
-                     const pt::Vec2 &velocity_ = pt::Vec2::Zero,
-                     const pt::Vec2 &position_ = pt::Vec2::Zero,
-                     float mass_ = 1.0f,
+                     const Vec2 &velocity_ = Vec2::Zero,
+                     const Vec2 &position_ = Vec2::Zero, float mass_ = 1.0f,
                      const Material &material_ = Material::STEEL,
-                     const pt::Vec2 &netForce = pt::Vec2::Zero);
+                     const Vec2 &netForce = Vec2::Zero);
 
   // Value fetches
 

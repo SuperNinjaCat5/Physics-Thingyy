@@ -6,28 +6,28 @@
 namespace pt {
 // Constructor
 
-RigidBody2d::RigidBody2d(const pt::Vec2 &velocity_, const pt::Vec2 &position_,
+RigidBody2d::RigidBody2d(const Vec2 &velocity_, const Vec2 &position_,
                          float mass_, const Material &material_,
-                         const pt::Vec2 &netForce_)
+                         const Vec2 &netForce_)
     : velocity(velocity_), position(position_), mass(mass_),
       material(material_), netForce(netForce_) {
   assert(mass_ > 0 && "A rigid bodies mass must be positive");
 };
 
 // Value fetches
-pt::Vec2 RigidBody2d::getVelocity() const { return velocity; }
+Vec2 RigidBody2d::getVelocity() const { return velocity; }
 
-pt::Vec2 RigidBody2d::getPosition() const { return position; }
+Vec2 RigidBody2d::getPosition() const { return position; }
 
 float RigidBody2d::getMass() const { return mass; }
 
-pt::Vec2 RigidBody2d::getNetForce() const { return netForce; }
+Vec2 RigidBody2d::getNetForce() const { return netForce; }
 
-pt::Material RigidBody2d::getMaterial() const { return material; }
+Material RigidBody2d::getMaterial() const { return material; }
 
 // Forces
 
-void RigidBody2d::addForce(const pt::Vec2 &force) { netForce += force; }
+void RigidBody2d::addForce(const Vec2 &force) { netForce += force; }
 void RigidBody2d::applyGravity() {
   Vec2 forceG = Vec2{0, mass * -9.8f};
   netForce += forceG;
@@ -44,7 +44,7 @@ void RigidBody2d::update(float &dt) { // called once per frame
   position += (velocity * dt); // p = p + (v*dt)
 
   // Reset netForce for next frame
-  netForce = pt::Vec2::Zero;
+  netForce = Vec2::Zero;
 }
 
 } // namespace pt

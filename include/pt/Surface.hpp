@@ -6,16 +6,16 @@ namespace pt {
 
 class Surface2d {
 protected:
-  pt::Vec2 position;
+  Vec2 position;
   float mass;
 
 public:
   // Constructor
 
-  Surface2d(const pt::Vec2 &position_ = pt::Vec2::Zero, float mass_ = 1.0f);
+  Surface2d(const Vec2 &position_ = Vec2::Zero, float mass_ = 1.0f);
 
   // Value fetches
-  pt::Vec2 getPosition() const;
+  Vec2 getPosition() const;
   float getMass() const;
 
   virtual float getMinX() const = 0;

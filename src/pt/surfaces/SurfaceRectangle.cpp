@@ -8,7 +8,7 @@ namespace pt {
 
 SurfaceRectangle::SurfaceRectangle(const float width_, const float height_,
                                    sf::RenderWindow *window_,
-                                   const pt::Vec2 &position_, float mass_)
+                                   const Vec2 &position_, float mass_)
     : Surface2d(position_, mass_), // base constructor
       width(width_), height(height_), pWindow(window_) {
 
@@ -20,7 +20,7 @@ SurfaceRectangle::SurfaceRectangle(const float width_, const float height_,
 
 // Value fetches
 
-pt::Vec2 SurfaceRectangle::getPosition() const { return position; }
+Vec2 SurfaceRectangle::getPosition() const { return position; }
 
 float SurfaceRectangle::getMass() const { return mass; }
 

@@ -17,11 +17,10 @@ public:
 
   SurfaceRectangle(const float width, const float height,
                    sf::RenderWindow *window_,
-                   const pt::Vec2 &position_ = pt::Vec2::Zero,
-                   float mass_ = 1.0f);
+                   const Vec2 &position_ = Vec2::Zero, float mass_ = 1.0f);
 
   // Value fetches
-  pt::Vec2 getPosition() const;
+  Vec2 getPosition() const;
   float getMass() const;
 
   float getMinX() const;

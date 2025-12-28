@@ -8,24 +8,24 @@
 namespace pt {
 class CollisionManager {
 private:
-  std::vector<std::unique_ptr<pt::RigidBody2d>> pBodies;
-  std::vector<std::unique_ptr<pt::Surface2d>> pSurfaces;
+  std::vector<std::unique_ptr<RigidBody2d>> pBodies;
+  std::vector<std::unique_ptr<Surface2d>> pSurfaces;
 
-  bool checkCollision(pt::RigidBody2d *pBody, pt::Surface2d *pSurface);
+  bool checkCollision(RigidBody2d *pBody, Surface2d *pSurface);
 
-  bool checkCollision(pt::RigidBody2d *pBodyA, pt::RigidBody2d *pBodyB);
+  bool checkCollision(RigidBody2d *pBodyA, RigidBody2d *pBodyB);
 
-  void resolveCollision(pt::RigidBody2d *pBody, pt::Surface2d *pSurface);
+  void resolveCollision(RigidBody2d *pBody, Surface2d *pSurface);
 
-  void resolveCollision(pt::RigidBody2d *pBodyA, pt::RigidBody2d *pBodyB);
+  void resolveCollision(RigidBody2d *pBodyA, RigidBody2d *pBodyB);
 
 public:
   // Constructor
   CollisionManager();
 
   // Actions
-  void addSurface(pt::Surface2d *psSurface);
-  void addRigidBody(pt::RigidBody2d *pRigidBody);
+  void addSurface(Surface2d *psSurface);
+  void addRigidBody(RigidBody2d *pRigidBody);
 
   void update(float &dt);
 };
