@@ -1,15 +1,16 @@
 #include "pt/RigidBody.hpp"
 #include "pt/PhysicsThingyy.hpp"
+#include "pt/helpers/Material.hpp"
 #include <cassert>
-
 
 namespace pt {
 // Constructor
 
 RigidBody2d::RigidBody2d(const pt::Vec2 &velocity_, const pt::Vec2 &position_,
-                         float mass_, const pt::Vec2 &netForce_)
-    : mass(mass_), velocity(velocity_), position(position_),
-      netForce(netForce_) {
+                         float mass_, const Material &material_,
+                         const pt::Vec2 &netForce_)
+    : velocity(velocity_), position(position_), mass(mass_),
+      material(material_), netForce(netForce_) {
   assert(mass_ > 0 && "A rigid bodies mass must be positive");
 };
 
@@ -21,6 +22,8 @@ pt::Vec2 RigidBody2d::getPosition() const { return position; }
 float RigidBody2d::getMass() const { return mass; }
 
 pt::Vec2 RigidBody2d::getNetForce() const { return netForce; }
+
+pt::Material RigidBody2d::getMaterial() const { return material; }
 
 // Forces
 

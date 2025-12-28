@@ -9,8 +9,10 @@ RigidBodyRectangle::RigidBodyRectangle(const float width_, const float height_,
                                        sf::RenderWindow *window_,
                                        const pt::Vec2 &velocity_,
                                        const pt::Vec2 &position_, float mass_,
+                                       const Material &material_,
                                        const pt::Vec2 &netForce_)
-    : RigidBody2d(velocity_, position_, mass_, netForce_), // base constructor
+    : RigidBody2d(velocity_, position_, mass_, material_,
+                  netForce_), // base constructor
       width(width_), height(height_), pWindow(window_) {
 
   rect.setSize({width, height});

@@ -1,8 +1,10 @@
-g++ src\main.cpp src\pt\RigidBody.cpp `
-    src\pt\helpers\vec2.cpp `
+g++ src\main.cpp `
+    src\pt\RigidBody.cpp `
     src\pt\shapes\RigidBodyRectangle.cpp `
     src\pt\Surface.cpp `
     src\pt\surfaces\SurfaceRectangle.cpp `
+    src\pt\helpers\vec2.cpp `
+    src\pt\helpers\Material.cpp `
     src\pt\CollisionManager.cpp `
     -I"C:\Users\benel\dev\Cpp\Projects\Physics-Engine\include" `
     -I"C:\Users\benel\dev\Cpp\Packages\GCC_15.2.0\SFML\include" `

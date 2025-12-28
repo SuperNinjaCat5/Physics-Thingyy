@@ -1,4 +1,5 @@
 #pragma once
+#include "pt/helpers/Material.hpp"
 #include "pt/helpers/vec2.hpp"
 #include <cmath>
 
@@ -10,19 +11,22 @@ protected:
   pt::Vec2 position;
   float mass;
   pt::Vec2 netForce;
+  pt::Material material;
 
 public:
   // Constructor
 
   RigidBody2d(const pt::Vec2 &velocity_ = pt::Vec2::Zero,
               const pt::Vec2 &position_ = pt::Vec2::Zero, float mass_ = 1.0f,
-              const pt::Vec2 &netForce = pt::Vec2::Zero);
+              const pt::Material &material_ = Material::STEEL,
+              const pt::Vec2 &netForce_ = pt::Vec2::Zero);
 
   // Value fetches
   pt::Vec2 getVelocity() const;
   pt::Vec2 getPosition() const;
   float getMass() const;
   pt::Vec2 getNetForce() const;
+  pt::Material getMaterial() const;
 
   virtual float getMinX() const = 0;
   virtual float getMaxX() const = 0;
